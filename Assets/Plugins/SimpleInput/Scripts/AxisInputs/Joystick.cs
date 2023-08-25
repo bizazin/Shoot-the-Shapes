@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Core.Abstracts;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace SimpleInputNamespace
 {
-	public class Joystick : MonoBehaviour, ISimpleInputDraggable
+	public class Joystick : View, ISimpleInputDraggable
 	{
 		public enum MovementAxes { XandY, X, Y };
 

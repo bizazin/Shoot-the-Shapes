@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ModestTree;
-#if ZEN_SIGNALS_ADD_UNIRX
 using UniRx;
-#endif
 
 namespace Zenject
 {
@@ -205,7 +203,6 @@ namespace Zenject
             }
         }
 
-#if ZEN_SIGNALS_ADD_UNIRX
         public IObservable<TSignal> GetStreamId<TSignal>(object identifier)
         {
             return GetStreamId(typeof(TSignal), identifier).Select(x => (TSignal)x);
@@ -225,7 +222,6 @@ namespace Zenject
         {
             return GetStreamId(signalType, null);
         }
-#endif
 
         public void SubscribeId<TSignal>(object identifier, Action callback)
         {

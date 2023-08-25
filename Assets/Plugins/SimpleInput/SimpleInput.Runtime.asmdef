@@ -1,3 +1,16 @@
-﻿{
-	"name": "SimpleInput.Runtime"
+{
+    "name": "SimpleInput.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:69397eb0863374b478f1546e0b89a1e5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
