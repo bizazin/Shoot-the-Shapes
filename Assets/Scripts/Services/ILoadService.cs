@@ -1,4 +1,4 @@
-namespace Services.Impls
+namespace Services
 {
     public interface ILoadService
     {

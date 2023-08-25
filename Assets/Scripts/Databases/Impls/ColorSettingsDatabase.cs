@@ -9,7 +9,8 @@ namespace Databases.Impls
         
         public Color GetRandomColor()
         {
-            if (Colors.Count == 0) return Color.white; // Default to white if no colors available
+            if (Colors.Count == 0) 
+                return Color.white;
             return Colors[Random.Range(0, Colors.Count)];
         }
     }

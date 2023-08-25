@@ -63,6 +63,7 @@
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Databases/Impls/ColorSettingsDatabase.cs.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Databases/Impls/ShapeSettingsDatabase.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Databases/Impls/ShapeSettingsDatabase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/Main.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Jsons.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Jsons/Paths.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Jsons/Paths.cs.meta" afterDir="false" />
@@ -98,8 +99,12 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/Impls/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/Impls/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Databases/Impls/BulletSettingsDatabase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Databases/Impls/BulletSettingsDatabase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Installers/MainInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/MainInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Installers/MainPrefabInstallers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/MainPrefabInstallers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Installers/MainInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/Main/MainInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Installers/MainInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/Main/MainInstaller.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Installers/MainPrefabInstallers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/Main/MainPrefabInstallers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Installers/MainPrefabInstallers.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/Main/MainPrefabInstallers.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Installers/MainUiInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/Main/MainUiInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Installers/MainUiInstaller.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Installers/Main/MainUiInstaller.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Models/PlayerSettingsVo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Models/PlayerSettingsVo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ObjectPooling/Objects/BulletBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ObjectPooling/Objects/BulletBehaviour.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ObjectPooling/Objects/ShapeComponentBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ObjectPooling/Objects/ShapeComponentBehaviour.cs" afterDir="false" />
@@ -121,6 +126,7 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnPyramid.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnPyramid.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Views/PlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Views/PlayerView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,6 +138,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -229,7 +247,7 @@
       <workItem from="1692903048651" duration="2277000" />
       <workItem from="1692905387013" duration="6948000" />
       <workItem from="1692914036409" duration="15970000" />
-      <workItem from="1692958339391" duration="21114000" />
+      <workItem from="1692958339391" duration="25337000" />
     </task>
     <servers />
   </component>
@@ -258,7 +276,7 @@
           </properties>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+        <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Services/Impls/BulletService.cs</url>
           <line>55</line>
           <properties documentPath="D:\UnityProjects\Shoot-the-Shapes\Assets\Scripts\Services\Impls\BulletService.cs" initialLine="50" containingFunctionPresentation="Lambda expression inside Method 'CreateHitAction'">
@@ -273,29 +291,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Services/Impls/LoadService.cs</url>
-          <line>25</line>
+          <line>23</line>
           <properties documentPath="D:\UnityProjects\Shoot-the-Shapes\Assets\Scripts\Services\Impls\LoadService.cs" initialLine="25" containingFunctionPresentation="Method 'LoadColorsFromJson'">
             <startOffsets>
-              <option value="593" />
+              <option value="545" />
             </startOffsets>
             <endOffsets>
-              <option value="594" />
+              <option value="546" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+        <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ShapeSpawnStrategies/AShapeSpawnStrategy.cs</url>
-          <line>33</line>
+          <line>43</line>
           <properties documentPath="D:\UnityProjects\Shoot-the-Shapes\Assets\Scripts\ShapeSpawnStrategies\AShapeSpawnStrategy.cs" initialLine="33" containingFunctionPresentation="Method 'SpawnAndAddComponent'">
             <startOffsets>
-              <option value="1227" />
+              <option value="1848" />
             </startOffsets>
             <endOffsets>
-              <option value="1317" />
+              <option value="1938" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Controllers/Impls/PlayerController.cs</url>
+          <line>46</line>
+          <properties documentPath="D:\UnityProjects\Shoot-the-Shapes\Assets\Scripts\Controllers\Impls\PlayerController.cs" initialLine="46" containingFunctionPresentation="Method 'Initialize'">
+            <startOffsets>
+              <option value="1585" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1586" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

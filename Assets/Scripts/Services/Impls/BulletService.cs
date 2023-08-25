@@ -35,18 +35,25 @@ namespace Services.Impls
             var bullet = _bulletPool.Spawn(spawnTransform);
             bullet.transform.position = spawnTransform.position;
             bullet.Renderer.material.color = _colorSettingsDatabase.GetRandomColor();
-
-            var despawnTimer = Observable
-                .Timer(TimeSpan.FromSeconds(_bulletSettingsDatabase.Settings.MaxBulletLifetimeS))
-                .Subscribe(_ => DespawnBullet(bullet)).AddTo(bullet);
+            AttachHitActionToBullet(bullet);
             
+            return bullet;
+        }
+        
+        private void AttachHitActionToBullet(BulletBehaviour bullet)
+        {
+            var despawnTimer = SetupBulletDespawnTimer(bullet);
+
             var hitAction = CreateHitAction(bullet, despawnTimer);
 
             bullet.CurrentHitAction = hitAction;
             bullet.OnShapeHit += hitAction;
-
-            return bullet;
         }
+
+        private IDisposable SetupBulletDespawnTimer(BulletBehaviour bullet) =>
+            Observable
+                .Timer(TimeSpan.FromSeconds(_bulletSettingsDatabase.Settings.MaxBulletLifetimeS))
+                .Subscribe(_ => DespawnBullet(bullet)).AddTo(bullet);
 
         private Action<ShapeComponentBehaviour, Vector3> CreateHitAction(BulletBehaviour bullet, IDisposable despawnTimer) =>
             (hitShapeComponent, hitPosition) =>
@@ -60,6 +67,7 @@ namespace Services.Impls
         {
             if (bullet.CurrentHitAction != null)
                 bullet.OnShapeHit -= bullet.CurrentHitAction;
+
             _bulletPool.Despawn(bullet);
         }
     }

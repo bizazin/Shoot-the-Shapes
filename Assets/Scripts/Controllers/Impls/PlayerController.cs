@@ -22,7 +22,6 @@ namespace Controllers.Impls
         private readonly IShapeService _shapeService;
         private readonly CompositeDisposable _disposable = new();
         private IDisposable _spawnSubscription;
-
         private bool _isCurrentShapeActive;
 
         public PlayerController
@@ -45,46 +44,12 @@ namespace Controllers.Impls
 
         public void Initialize()
         {
-            _signalBus.GetStream<SignalBulletHitShape>().Subscribe(s => OnShapeHit(s.HitShapeComponent, s.HitPosition))
-                .AddTo(_disposable);
+            RegisterSignals();
             SpawnNextShape();
             StartSpawningBullets();
         }
 
         public void Dispose() => _disposable?.Dispose();
-
-        private void OnShapeHit(ShapeComponentBehaviour shapeComponent, Vector3 hitPosition)
-        {
-            if (!_isCurrentShapeActive)
-                return;
-            _spawnSubscription?.Dispose();
-            _spawnSubscription = null;
-            _shapeService.DestroyCurrentShape(shapeComponent, hitPosition);
-            Observable.Timer(TimeSpan.FromSeconds(_shapeSettingsDatabase.Settings.SpawnIntervalS))
-                .Subscribe(_ =>
-                {
-                    SpawnNextShape();
-                    StartSpawningBullets();
-                }).AddTo(_disposable);
-            _isCurrentShapeActive = false;
-        }
-
-        private void SpawnNextShape()
-        {
-            _isCurrentShapeActive = true;
-            _shapeService.DespawnCurrentShape();
-            var shapeSpawnPoint = _shapeService.SpawnShape(View.transform);
-            View.Player.transform.DOLookAt(shapeSpawnPoint, _playerSettingsDatabase.Settings.LookAtAnimationDurationS);
-        }
-
-        private void StartSpawningBullets()
-        {
-            _spawnSubscription?.Dispose();
-
-            _spawnSubscription = Observable
-                .Interval(TimeSpan.FromSeconds(_playerSettingsDatabase.Settings.ShootingIntervalS))
-                .Subscribe(_ => LaunchBullet()).AddTo(_disposable);
-        }
 
         public void TurnInDirection(Vector2 moveVector)
         {
@@ -93,6 +58,57 @@ namespace Controllers.Impls
 
             View.Player.Rotate(Vector3.up, horizontalRotation, Space.World);
             View.Player.Rotate(Vector3.right, verticalRotation, Space.Self);
+        }
+
+        private void RegisterSignals() =>
+            _signalBus.GetStream<SignalBulletHitShape>().Subscribe(s => OnShapeHit(s.HitShapeComponent, s.HitPosition))
+                .AddTo(_disposable);
+
+        private void OnShapeHit(ShapeComponentBehaviour shapeComponent, Vector3 hitPosition)
+        {
+            if (!_isCurrentShapeActive)
+                return;
+            StopSpawningBullets();
+            _shapeService.DestroyCurrentShape(shapeComponent, hitPosition);
+            RescheduleShapeSpawn();
+            _isCurrentShapeActive = false;
+        }
+
+        private void StopSpawningBullets()
+        {
+            _spawnSubscription?.Dispose();
+            _spawnSubscription = null;
+        }
+
+        private void RescheduleShapeSpawn()
+        {
+            Observable.Timer(TimeSpan.FromSeconds(_shapeSettingsDatabase.Settings.SpawnIntervalS))
+                .Subscribe(_ =>
+                {
+                    SpawnNextShape();
+                    StartSpawningBullets();
+                }).AddTo(_disposable);
+        }
+
+        private void SpawnNextShape()
+        {
+            _isCurrentShapeActive = true;
+            _shapeService.DespawnCurrentShape();
+            OrientPlayerToNextShapeSpawnPoint();
+        }
+
+        private void OrientPlayerToNextShapeSpawnPoint()
+        {
+            var shapeSpawnPoint = _shapeService.SpawnShape(View.transform);
+            View.Player.transform.DOLookAt(shapeSpawnPoint, _playerSettingsDatabase.Settings.LookAtAnimationDurationS);
+        }
+
+        private void StartSpawningBullets()
+        {
+            _spawnSubscription?.Dispose();
+            _spawnSubscription = Observable
+                .Interval(TimeSpan.FromSeconds(_playerSettingsDatabase.Settings.ShootingIntervalS))
+                .Subscribe(_ => LaunchBullet()).AddTo(_disposable);
         }
 
         private void LaunchBullet()
