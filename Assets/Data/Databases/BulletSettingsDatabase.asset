@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb3eab9e4a64dcd932cd1b27cea3187, type: 3}
   m_Name: BulletSettingsDatabase
   m_EditorClassIdentifier: 
-  _playerSettings:
-    BulletVelocity: 20
+  _bulletSettings:
+    BulletVelocity: 40
     MaxBulletLifetimeS: 5

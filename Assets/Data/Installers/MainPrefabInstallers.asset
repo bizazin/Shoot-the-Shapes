@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c08f8ae0fe14b6e96db235527799e12, type: 3}
   m_Name: MainPrefabInstallers
   m_EditorClassIdentifier: 
-  _playerView: {fileID: 1192807049066158709, guid: 45cf18453fdb0f348baa41269078b58b, type: 3}
+  _playerView: {fileID: 8489116809895944317, guid: 454df3011e22ec84894884803fc95514, type: 3}
   _bulletBehaviour: {fileID: 7145472404036536269, guid: f47954330477c124db62a7e78692a4bd, type: 3}
+  _cubeComponentBehaviour: {fileID: -1880672909806959933, guid: 55ee279bd9aa9144f80667fb676eece3, type: 3}
+  _ballComponentBehaviour: {fileID: 9130533137541782617, guid: 79cb8d52f56eb2f4d9f861775d16302f, type: 3}
   _playerSettingsDatabase: {fileID: 11400000, guid: 0e5ffdbcd2f235d46ab4efb254a092a0, type: 2}
   _bulletSettingsDatabase: {fileID: 11400000, guid: aaa4d55eff3e5204cbaef963d5d372bb, type: 2}
+  _shapeSettingsDatabase: {fileID: 11400000, guid: 60b4d2423a3c85e49a56e4ffdadde89f, type: 2}

@@ -3,7 +3,7 @@ using ObjectPooling.Objects;
 
 namespace ObjectPooling.Pools
 {
-    public interface ICubeComponentPool : IPool<ShapeComponentBehaviour>
+    public interface ICubeComponentPool : IPool<ShapeComponentBehaviour>, IShapeComponentPool
     {
     }
 }

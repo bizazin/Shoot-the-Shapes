@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using Databases;
 using Enums;
+using ObjectPooling.Objects;
 using ObjectPooling.Pools;
 using UnityEngine;
 
@@ -6,21 +9,25 @@ namespace ShapeSpawnStrategies.Impls
 {
     public class PyramidSpawnStrategy : AShapeSpawnStrategy
     {
-        private readonly IRandomShapeComponentPool _randomShapeComponentPool;
-        
-        public int baseSize = 10; // Размер основания пирамиды
+        private readonly IShapeSettingsDatabase _shapeSettingsDatabase;
+
         public override EShapeType ShapeType => EShapeType.Pyramid;
 
         public PyramidSpawnStrategy
         (
-            IRandomShapeComponentPool randomShapeComponentPool
-        ) : base(randomShapeComponentPool)
+            IRandomShapeComponentPool randomShapeComponentPool,
+            IShapeSettingsDatabase shapeSettingsDatabase,
+            IColorSettingsDatabase colorSettingsDatabase
+        ) : base(randomShapeComponentPool, shapeSettingsDatabase, colorSettingsDatabase)
         {
-            _randomShapeComponentPool = randomShapeComponentPool;
+            _shapeSettingsDatabase = shapeSettingsDatabase;
         }
 
-        public override void Spawn(Transform center)
+        public override List<ShapeComponentBehaviour> Spawn(Transform parent, Vector3 spawnPoint)
         {
+            var baseSize = _shapeSettingsDatabase.PyramidSettings.BaseSize;
+            
+            CurrentShapeComponents.Clear();
             for (var y = 0; y < baseSize; y++)
             {
                 var currentBaseSize = baseSize - y;
@@ -29,14 +36,14 @@ namespace ShapeSpawnStrategies.Impls
                 for (var x = -halfBaseSize; x < halfBaseSize; x++)
                     for (var z = -halfBaseSize; z < halfBaseSize; z++)
                     {
-                        var centerPos = center.position;
+                        var centerPos = spawnPoint;
                         var position = new Vector3(x + centerPos.x, y + centerPos.y, z + centerPos.z);
 
-                        var shapeComponentBehaviour = _randomShapeComponentPool.Spawn(center);
-                        shapeComponentBehaviour.transform.position = position;
+                        SpawnAndAddComponent(parent, position);
                     }
-            }
 
+            }
+            return CurrentShapeComponents;
         }
     }
 }

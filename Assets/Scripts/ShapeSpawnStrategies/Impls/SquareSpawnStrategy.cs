@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using Databases;
 using Enums;
+using ObjectPooling.Objects;
 using ObjectPooling.Pools;
 using UnityEngine;
 
@@ -6,31 +9,35 @@ namespace ShapeSpawnStrategies.Impls
 {
     public class SquareSpawnStrategy : AShapeSpawnStrategy
     {
-        private readonly IRandomShapeComponentPool _randomShapeComponentPool;
-        
-        public int gridSize = 10; 
+        private readonly IShapeSettingsDatabase _shapeSettingsDatabase;
         
         public override EShapeType ShapeType => EShapeType.Square;
 
         public SquareSpawnStrategy
         (
-            IRandomShapeComponentPool randomShapeComponentPool
-        ) : base(randomShapeComponentPool)
+            IRandomShapeComponentPool randomShapeComponentPool,
+            IShapeSettingsDatabase shapeSettingsDatabase,
+            IColorSettingsDatabase colorSettingsDatabase
+        ) : base(randomShapeComponentPool, shapeSettingsDatabase, colorSettingsDatabase)
         {
-            _randomShapeComponentPool = randomShapeComponentPool;
+            _shapeSettingsDatabase = shapeSettingsDatabase;
         }
 
-        public override void Spawn(Transform center)
+        public override List<ShapeComponentBehaviour> Spawn(Transform parent, Vector3 spawnPoint)
         {
+            var gridSize = _shapeSettingsDatabase.SquareSettings.GridSize;
+    
+            CurrentShapeComponents.Clear();
             for (var x = -gridSize; x < gridSize; x++)
-                for (var z = -gridSize; z < gridSize; z++)
+                for (var y = -gridSize; y < gridSize; y++)
                 {
-                    var position = new Vector3(x + 0.5f, center.position.y, z + 0.5f); 
+                    var halfSize = _shapeSettingsDatabase.Settings.StandardComponentSize;
+                    var position = new Vector3(spawnPoint.x + x + halfSize, spawnPoint.y + y + halfSize, spawnPoint.z); 
 
-                    var shapeComponentBehaviour = _randomShapeComponentPool.Spawn(center);
-                    shapeComponentBehaviour.transform.position = position;
+                    SpawnAndAddComponent(parent, position);
                 }
 
+            return CurrentShapeComponents;
         }
     }
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00e635decdb40a39871051f92e31cde, type: 3}
+  m_Name: ShapeSettingsDatabase
+  m_EditorClassIdentifier: 
+  _shapeSettings:
+    SpawnRadius: {x: 30, y: 60}
+    VerticalViewAngleDeg: {x: 30, y: 60}
+    HitForce: 100
+    SpawnIntervalS: 5
+    StandardComponentSize: 1
+  _circleSettings:
+    Radius: 5
+  _pyramidSettings:
+    BaseSize: 10
+  _rectangleSettings:
+    Width: 10
+    Height: 5
+  _squareSettings:
+    GridSize: 5

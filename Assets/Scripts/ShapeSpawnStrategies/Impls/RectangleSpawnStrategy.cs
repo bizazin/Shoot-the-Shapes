@@ -1,4 +1,7 @@
-﻿using Enums;
+﻿using System.Collections.Generic;
+using Databases;
+using Enums;
+using ObjectPooling.Objects;
 using ObjectPooling.Pools;
 using UnityEngine;
 
@@ -6,33 +9,34 @@ namespace ShapeSpawnStrategies.Impls
 {
     public class RectangleSpawnStrategy : AShapeSpawnStrategy
     {
-        private readonly IRandomShapeComponentPool _randomShapeComponentPool;
-        public int width = 10; // Ширина прямоугольника
-        public int height = 5; // Высота прямоугольника
+        private readonly IShapeSettingsDatabase _shapeSettingsDatabase;
+        
         public override EShapeType ShapeType => EShapeType.Rectangle;
 
         public RectangleSpawnStrategy
         (
-            IRandomShapeComponentPool randomShapeComponentPool
-        ) : base(randomShapeComponentPool)
+            IRandomShapeComponentPool randomShapeComponentPool,
+            IShapeSettingsDatabase shapeSettingsDatabase,
+            IColorSettingsDatabase colorSettingsDatabase
+        ) : base(randomShapeComponentPool, shapeSettingsDatabase, colorSettingsDatabase)
         {
-            _randomShapeComponentPool = randomShapeComponentPool;
+            _shapeSettingsDatabase = shapeSettingsDatabase;
         }
 
-        public override void Spawn(Transform center)
+        public override List<ShapeComponentBehaviour> Spawn(Transform parent, Vector3 spawnPoint)
         {
-            int halfWidth = width / 2;
-            int halfHeight = height / 2;
+            var halfWidth = _shapeSettingsDatabase.RectangleSettings.Width / 2;
+            var halfHeight = _shapeSettingsDatabase.RectangleSettings.Height / 2;
 
+            CurrentShapeComponents.Clear();
             for (var x = -halfWidth; x < halfWidth; x++)
-                for (var z = -halfHeight; z < halfHeight; z++)
+                for (var y = -halfHeight; y < halfHeight; y++)
                 {
-                    var position = new Vector3(x + 0.5f, center.position.y, z + 0.5f); 
-
-                    var shapeComponentBehaviour = _randomShapeComponentPool.Spawn(center);
-                    shapeComponentBehaviour.transform.position = position;
+                    var position = new Vector3(spawnPoint.x + x, spawnPoint.y + y - halfHeight, spawnPoint.z); 
+                    SpawnAndAddComponent(parent, position);
                 }
 
+            return CurrentShapeComponents;
         }
     }
 }

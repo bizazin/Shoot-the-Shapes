@@ -5,10 +5,10 @@ namespace Views
 {
     public class PlayerView : View
     {
+        [SerializeField] private Transform _player;
         [SerializeField] private Transform _bulletSpawnTransform;
-        [SerializeField] private Transform _riflePivotTransform;
 
         public Transform BulletSpawnTransform => _bulletSpawnTransform;
-        public Transform RiflePivotTransform => _riflePivotTransform;
+        public Transform Player => _player;
     }
 }

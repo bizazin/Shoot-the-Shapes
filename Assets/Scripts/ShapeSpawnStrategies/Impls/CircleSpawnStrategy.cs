@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using Databases;
 using Enums;
+using ObjectPooling.Objects;
 using ObjectPooling.Pools;
 using UnityEngine;
 
@@ -6,33 +9,36 @@ namespace ShapeSpawnStrategies.Impls
 {
     public class CircleSpawnStrategy : AShapeSpawnStrategy
     {
-        private readonly IRandomShapeComponentPool _randomShapeComponentPool;
-        public int gridSize = 10;
-        public float radius = 5f;
+        private readonly IShapeSettingsDatabase _shapeSettingsDatabase;
 
         public override EShapeType ShapeType => EShapeType.Circle;
 
         public CircleSpawnStrategy
         (
-            IRandomShapeComponentPool randomShapeComponentPool
-        ) : base(randomShapeComponentPool)
+            IRandomShapeComponentPool randomShapeComponentPool,
+            IShapeSettingsDatabase shapeSettingsDatabase,
+            IColorSettingsDatabase colorSettingsDatabase
+        ) : base(randomShapeComponentPool, shapeSettingsDatabase, colorSettingsDatabase)
         {
-            _randomShapeComponentPool = randomShapeComponentPool;
+            _shapeSettingsDatabase = shapeSettingsDatabase;
         }
 
-        public override void Spawn(Transform center)
+        public override List<ShapeComponentBehaviour> Spawn(Transform parent, Vector3 spawnPoint)
         {
-            for (var x = -gridSize; x < gridSize; x++)
-                for (var z = -gridSize; z < gridSize; z++)
-                {
-                    var position = new Vector3(x + 0.5f, center.position.y, z + 0.5f); 
+            var radius = _shapeSettingsDatabase.CircleSettings.Radius;
 
-                    if (Vector3.Distance(center.position, position) <= radius)
-                    {
-                        var shapeComponentBehaviour = _randomShapeComponentPool.Spawn(center);
-                        shapeComponentBehaviour.transform.position = position;
-                    }
+            CurrentShapeComponents.Clear();
+            for (var x = -radius; x < radius; x++)
+                for (var y = -radius; y < radius; y++)
+                {
+                    var halfSize = _shapeSettingsDatabase.Settings.StandardComponentSize;
+                    var position = new Vector3(x + halfSize + spawnPoint.x, y + halfSize + spawnPoint.y, spawnPoint.z);
+
+                    if (Vector3.Distance(spawnPoint, position) <= radius) 
+                        SpawnAndAddComponent(parent, position);
                 }
+
+            return CurrentShapeComponents;
         }
     }
 }

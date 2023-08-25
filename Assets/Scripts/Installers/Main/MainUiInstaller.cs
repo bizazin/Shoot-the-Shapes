@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Installers
+namespace Installers.Main
 {
     [CreateAssetMenu(menuName = "Installers/MainUiInstaller", fileName = "MainUiInstaller")]
     public class MainUiInstaller : ScriptableObjectInstaller

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Enums;
 using Extensions;
 using ObjectPooling.Objects;
@@ -13,10 +12,15 @@ namespace ObjectPooling.Pools.Impls
 
         public RandomShapeComponentPool
         (
-            List<IShapeComponentPool> shapeComponentPools
+            ICubeComponentPool cubeComponentPool,
+            IBallComponentPool ballComponentPool
         )
         {
-            _shapeComponentPools = shapeComponentPools.ToDictionary(pool => pool.ShapeType);
+            _shapeComponentPools = new Dictionary<EShapeComponentType, IShapeComponentPool>
+            {
+                { ballComponentPool.ShapeType, ballComponentPool },
+                { cubeComponentPool.ShapeType, cubeComponentPool }
+            };
         }
 
         public ShapeComponentBehaviour Spawn(Transform parent) =>

@@ -7,5 +7,6 @@ namespace Models
     {
         public float RotationSpeed;
         public float ShootingIntervalS;
+        public float LookAtAnimationDurationS;
     }
 }

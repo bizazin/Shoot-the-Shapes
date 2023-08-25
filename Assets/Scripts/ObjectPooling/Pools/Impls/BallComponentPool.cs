@@ -4,7 +4,7 @@ using ObjectPooling.Objects;
 
 namespace ObjectPooling.Pools.Impls
 {
-    public class BallComponentPool : Pool<ShapeComponentBehaviour>, IShapeComponentPool, IBallComponentPool
+    public class BallComponentPool : Pool<ShapeComponentBehaviour>, IBallComponentPool
     {
         public EShapeComponentType ShapeType => EShapeComponentType.Ball;
     }

@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: -515926502178677603}
+  _renderer: {fileID: 5362150272066434054}

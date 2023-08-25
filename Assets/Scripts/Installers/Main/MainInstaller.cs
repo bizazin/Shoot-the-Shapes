@@ -3,7 +3,7 @@ using ShapeSpawnStrategies.Impls;
 using Signals;
 using Zenject;
 
-namespace Installers
+namespace Installers.Main
 {
     public class MainInstaller : MonoInstaller
     {
@@ -30,6 +30,7 @@ namespace Installers
         {
             Container.BindInterfacesTo<CircleSpawnStrategy>().AsSingle();
             Container.BindInterfacesTo<RectangleSpawnStrategy>().AsSingle();
+            Container.BindInterfacesTo<PyramidSpawnStrategy>().AsSingle();
             Container.BindInterfacesTo<SquareSpawnStrategy>().AsSingle();
         }
     }
